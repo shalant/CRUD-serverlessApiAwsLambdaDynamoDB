@@ -39,7 +39,7 @@ exports.handler = async function(event) {
 
 async function getProduct(productId) {
     const params = {
-        TableName: dynomodbTableName,
+        TableName: dynamodbTableName,
         Key: {
             'productId': productId
         }
@@ -53,7 +53,7 @@ async function getProduct(productId) {
 
 async function getProducts() {
     const params = {
-        TableName: dynomodbTableName
+        TableName: dynamodbTableName
     }
     const allProducts = await scanDynamoRecords(params, []);
     const body = {
@@ -78,7 +78,7 @@ async function scanDynamoRecords(scanParams, itemArray) {
 
 async function saveProduct(requestBody) {
     const params = {
-        TableName: dynomodbTableName,
+        TableName: dynamodbTableName,
         Item: requestBody
     }
     return await dynamodb.put(params).promise().then(() => {
@@ -95,7 +95,7 @@ async function saveProduct(requestBody) {
 
 async function modifyProduct(productId, updateKey, updateValue) {
     const params = {
-        TableName: dynomodbTableName,
+        TableName: dynamodbTableName,
         Key: {
             'productId': productId
         },
@@ -119,7 +119,7 @@ async function modifyProduct(productId, updateKey, updateValue) {
 
 async function deleteProduct(product) {
     const params = {
-        TableName: dynomodbTableName,
+        TableName: dynamodbTableName,
         Key: {
             'productId': productId
         },
