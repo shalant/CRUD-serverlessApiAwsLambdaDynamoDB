@@ -6,7 +6,7 @@ const dynamodb = new AWS.DynamoDB.DocumentClient();
 const dynomodbTableName = 'product-inventory';
 const healthPath = '/health';
 const productPath = '/product';
-const products = '/products';
+const productsPath = '/products';
 
 exports.handler = async function(event) {
     console.log('Request event: ', event);
