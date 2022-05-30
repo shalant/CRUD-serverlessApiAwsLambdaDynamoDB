@@ -44,7 +44,7 @@ async function getProduct(productId) {
             'productId': productId
         }
     }
-    return await dynamodb.get(params).promise().then((response) ==> {
+    return await dynamodb.get(params).promise().then((response) => {
         return buildResponse(200, response.Item);
     }, (error) => {
         console.error('Do you custom error handling here. I am just gonna log it: ', error)
@@ -66,8 +66,8 @@ async function scanDynamoRecords(scanParams, itemArray) {
     try {
         const dynamoData = await dynamodb.scan(scanParams).promise();
         itemArray = itemArray.concat(dynamoData.Items);
-        if (dynamoData.LastEvaluateKey) {
-            scanParams.ExcluseStartkey = dynamoData.LastEvaluateKey;
+        if (dynamoData.LastEvaluatedKey) {
+            scanParams.ExclusiveStartkey = dynamoData.LastEvaluateKey;
             return await scanDynamoRecords(scanParams, itemArray);
         }
         return itemArray;
@@ -143,7 +143,6 @@ function buildResponse(statusCode, body) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(body);
+        body: JSON.stringify(body)
     }
 }
-
