@@ -4,9 +4,9 @@
 
 ## A great next step would be to add a front end that has buttons to perform all the CRUD actions. This tutorial used Postman.
 
-!(/images/20220529_221319.jpg)
+### Below you can see an image of adding an entry to the DynamoDB table via Postman
 
 <img src="/images/20220529_221319.jpg"
-    alt="Markdown Monster icon"
+    alt="Adding an entry in Postman"
     style="float: left; margin-right: 10px;"
 />
